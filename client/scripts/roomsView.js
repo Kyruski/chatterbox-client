@@ -12,7 +12,13 @@ var RoomsView = {
   },
 
   renderRoom: function(room) {
-    this.$select.append(`<div id="${room}">${room}</div>`);
+    
+    var roomToAdd = room.split(' ').join('');
+    var finalRoom = roomToAdd.split('\'').join('');
+
+
+    this.$select.append(`<div id="${finalRoom}">${finalRoom}</div>`);
+    
   }
 
 };

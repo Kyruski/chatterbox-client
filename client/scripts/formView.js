@@ -9,7 +9,11 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    
+    const username = App.username;
+    const text = $('input#message')[0].value;
+    // const header = {
+    // }
+    console.log(text);
     console.log('click!');
   },
 

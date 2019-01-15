@@ -7,7 +7,7 @@ var MessagesView = {
 
   render: function(array) {
     //render invioke render message as many times as needed
-    console.log('we got here');
+    console.log(array);
     for (let i = 0; i < array.length; i++) {
       this.renderMessage(array[i]);
     }
@@ -24,12 +24,18 @@ var MessagesView = {
     // });
     // console.log(message);
     // console.log(this.compile);
-    if ($(`#${message.roomname}`).length === 0) {
-      RoomsView.renderRoom(message.roomname);
+    if (message.roomname !== undefined) {
+      var roomToAdd = message.roomname.split(' ').join('');
+      var finalRoom = roomToAdd.split('\'').join('');
+      if ($(`#${finalRoom}`).length === 0) {
+        RoomsView.renderRoom(finalRoom);
+      }
     }
     
+    let textAttack = message.text[0] !== '<' && message.text[message.text.length - 1] !== '>';
+    let nameAttack = message.username[0] !== '<' && message.username[message.username.length - 1] !== '>';
     if (message.text !== undefined) {
-      if (message.text[0] !== '<' && message.text[message.text.length - 1] !== '>') {
+      if (textAttack && nameAttack) {
         this.$chats.append(MessageView.render(message));
       }
     }
