@@ -2,10 +2,10 @@ var MessagesView = {
 
   $chats: $('#chats'),
 
-  initialize: function() {
+  initialize: function() {// default behavior when first opened up messages view 
   },
 
-  render: function(array) {
+  render: function(array) {// invoke render messages for each message
     //render invioke render message as many times as needed
     console.log(array);
     for (let i = 0; i < array.length; i++) {
@@ -14,7 +14,7 @@ var MessagesView = {
 
   },
 
-  renderMessage: function(message) {
+  renderMessage: function(message) {// render each individual message to the dom 
     // $.getJSON('parse.js', function(data) {
     //   let html = '';
     //   for (let i = 0; i < data.order.length; i++) {
@@ -24,14 +24,14 @@ var MessagesView = {
     // });
     // console.log(message);
     // console.log(this.compile);
-    if (message.roomname !== undefined && message.roomname.length !== 0) {
-      var roomToAdd = message.roomname.split(' ').join('');
-      var finalRoom = roomToAdd.split('\'').join('');
-      if ($(`#${finalRoom}`).length === 0) {
-        console.log('here');
-        RoomsView.renderRoom(finalRoom);
-      }
-    }
+    // if (message.roomname !== undefined && message.roomname.length !== 0) {
+    //   var roomToAdd = message.roomname.split(' ').join('');
+    //   var finalRoom = roomToAdd.split('\'').join('');
+    //   if ($(`#${finalRoom}`).length === 0) {
+    //     console.log('here');
+    //     RoomsView.renderRoom(finalRoom);
+    //   }
+    // }
     
     if (message.text !== undefined && message.username !== undefined) {
       let textAttack = message.text[0] !== '<' && message.text[message.text.length - 1] !== '>';
