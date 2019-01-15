@@ -2,7 +2,7 @@ var Parse = {
 
   server: `http://parse.${window.CAMPUS}.hackreactor.com/chatterbox/classes/messages`,
 
-  create: function(message, successCB, errorCB = null) {
+  create: function(message, successCB, errorCB = null) { // this is to POST // TO SEND INFO TO SERVER
     $.ajax({
       url: Parse.server,
       type: 'POST',
@@ -15,7 +15,7 @@ var Parse = {
     });
   },
 
-  readAll: function(successCB, errorCB = null) {
+  readAll: function(successCB, errorCB = null) { // THIS IS TO GET /// TO GET INFO FROM SERVER 
     $.ajax({
       url: Parse.server,
       type: 'GET',

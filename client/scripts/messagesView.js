@@ -24,18 +24,20 @@ var MessagesView = {
     // });
     // console.log(message);
     // console.log(this.compile);
-    if (message.roomname !== undefined) {
+    if (message.roomname !== undefined && message.roomname.length !== 0) {
       var roomToAdd = message.roomname.split(' ').join('');
       var finalRoom = roomToAdd.split('\'').join('');
       if ($(`#${finalRoom}`).length === 0) {
+        console.log('here');
         RoomsView.renderRoom(finalRoom);
       }
     }
     
-    let textAttack = message.text[0] !== '<' && message.text[message.text.length - 1] !== '>';
-    let nameAttack = message.username[0] !== '<' && message.username[message.username.length - 1] !== '>';
-    if (message.text !== undefined) {
+    if (message.text !== undefined && message.username !== undefined) {
+      let textAttack = message.text[0] !== '<' && message.text[message.text.length - 1] !== '>';
+      let nameAttack = message.username[0] !== '<' && message.username[message.username.length - 1] !== '>';
       if (textAttack && nameAttack) {
+        
         this.$chats.append(MessageView.render(message));
       }
     }

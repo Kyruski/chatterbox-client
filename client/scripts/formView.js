@@ -11,9 +11,15 @@ var FormView = {
     event.preventDefault();
     const username = App.username;
     const text = $('input#message')[0].value;
-    // const header = {
-    // }
-    console.log(text);
+    const roomname = RoomsView.$select[0].value;
+    const header = Messages.create(username, text, roomname);
+    Parse.create(header, (data) => {
+      console.log(data);
+      App.refresh();
+    });
+    
+    // setTimeout(function(){App.refresh()}, 200);
+
     console.log('click!');
   },
 
@@ -21,5 +27,4 @@ var FormView = {
     var status = active ? 'true' : null;
     FormView.$form.find('input[type=submit]').attr('disabled', status);
   }
-
 };
