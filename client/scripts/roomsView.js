@@ -12,7 +12,7 @@ var RoomsView = {
   },
 
   renderRoom: function(room) {
-    this.$select.append(`<p id="${room}">${room}</p>`);
+    this.$select.append(`<div id="${room}">${room}</div>`);
   }
 
 };

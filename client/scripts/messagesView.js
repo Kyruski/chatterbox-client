@@ -6,7 +6,7 @@ var MessagesView = {
   },
 
   render: function(array) {
-    //render invioke renderß message as many times as needed
+    //render invioke render message as many times as needed
     console.log('we got here');
     for (let i = 0; i < array.length; i++) {
       this.renderMessage(array[i]);
@@ -24,7 +24,15 @@ var MessagesView = {
     // });
     // console.log(message);
     // console.log(this.compile);
-    this.$chats.append(`<p>${message}</p>`);
+    if ($(`#${message.roomname}`).length === 0) {
+      RoomsView.renderRoom(message.roomname);
+    }
+    
+    if (message.text !== undefined) {
+      if (message.text[0] !== '<' && message.text[message.text.length - 1] !== '>') {
+        this.$chats.append(MessageView.render(message));
+      }
+    }
   }
 };
 
